@@ -1,0 +1,20 @@
+{
+  "name": "simplediary",
+  "version": "1.0.0",
+  "description": "simple diary for storing daily status",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Min B. Baudel",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.9.1",
+    "electron": "^35.2.1"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^3.2.9"
+  }
+}

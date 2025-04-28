@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+  ">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <title>Simple-Diary</title>
+  </head>
+  <body>
+    <div class="h-100 flex-row items-center content-space-around">
+      <div class="login-container" style="background-color: antiquewhite;">
+        This is left container.
+      </div>
+      <div class="login-container">
+        <div id="login" class="intro-box content-space-around">
+          <div class="per100 flex-column">
+            <div class="m-tb-5p">
+              <label name="login-username">Username: </label>
+              <input id="login-username" type="text"></input>
+            </div>
+            <div class="m-tb-5p">
+              <label name">Password: </label>
+              <input id="login-password" type="password"></input>
+            </div>
+            <div class="items-center flex-column m-tb-5p h-100">
+              <button id="login-btn" type="button">User Login</button>
+              <span>Or</span>
+              <button id="set-sign-up-ui" type="button">Add New User</button>
+            </div>
+          </div>
+        </div>
+        <div id="new-user" class="no-display intro-box">
+          <div class="per100">
+            <label name="new-username">Username: </label>
+            <input id="new-username" type="text"></input>
+            <label name="new-password">Password: </label>
+            <input id="new-password" type="password"></input>
+            <button id="addUser" type="button">Add User</button>
+          </div>
+        </div>
+      </div>
+      <div class="login-container" style="background-color: chocolate;">
+        This is right container
+      </div>
+    </div>
+    <script src="./src/js/index.js"></script>
+  </body>
+</html>
