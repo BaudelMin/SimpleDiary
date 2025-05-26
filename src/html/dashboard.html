@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+    <title>Dashboard - Mindful Journal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a1a;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1rem;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #6c5ce7;
+        }
+
+        .sidebar-item:hover:not(.active) {
+            background-color: #2a2a2a;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .welcome-header {
+            margin-bottom: 2rem;
+        }
+
+        .welcome-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .streak-card {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .streak-title {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .streak-progress {
+            background-color: #2a2a2a;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .streak-bar {
+            background-color: #6c5ce7;
+            height: 100%;
+            width: 23.33%; /* 7 days out of 30 */
+        }
+
+        .streak-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        .entry-form {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .entry-form textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            background-color: #6c5ce7;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #5f4dd0;
+        }
+
+        .entries-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .entry-card {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .entry-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-content {
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .log-out {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-item active">
+            <span>📝 Daily Entry</span>
+        </div>
+        <div class="sidebar-item">
+            <span>⚙️ Settings</span>
+        </div>
+        <div class="sidebar-item">
+            <span>👤 Profile</span>
+        </div>
+        <div class="sidebar-item log-out">
+            <span>🚪 Log Out</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="welcome-header">
+            <h1>Welcome back, <span class="username">Journal Keeper</span>!</h1>
+        </div>
+
+        <div class="streak-card">
+            <div class="streak-title">Journaling Streak</div>
+            <div class="streak-progress">
+                <div class="streak-bar"></div>
+            </div>
+            <div class="streak-info">
+                <span>7 Days</span>
+                <span>Target: 30 Days</span>
+            </div>
+        </div>
+
+        <div class="entry-form">
+            <textarea placeholder="What's on your mind today?"></textarea>
+            <button class="btn">Save Entry</button>
+        </div>
+
+        <h2>Recent Entries</h2>
+        <div class="entries-list" id="entriesList">
+            <!-- Entries will be dynamically added here -->
+        </div>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html> 
