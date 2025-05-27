@@ -91,8 +91,8 @@ const  updateAllPageContent = (data) => {
 }
 
 const collectUserPages = (user_id) => {
-    let query = 'SELECT page_id, title, create_at, page_number FROM page WHERE user_id = ? LIMIT 10';
-    let maxQuery = 'SELECT MAX(page_number) max_page_number FROM page WHERE user_id = ?';
+    let query = 'SELECT page_id, title, create_at, page_number FROM page WHERE user_id = ?';
+    let maxQuery = 'SELECT MAX(page_number) as max_page_number FROM page WHERE user_id = ?';
     return new Promise((resolve, reject) => {
         try{
             let dbStmt, result, data = {}
@@ -102,7 +102,6 @@ const collectUserPages = (user_id) => {
             dbStmt = db.prepare(query);
             result = dbStmt.all(user_id);
             data.pageContent = result;
-            console.log('maxResult = ', data);
             resolve(data);
         }
         catch(error){reject(error)}
@@ -110,6 +109,7 @@ const collectUserPages = (user_id) => {
 }
 
 const getAllPagesContent = (page_id) => {
+    console.log('getAllPagesContent called with page_id = ', page_id);
     let query = 'SELECT paragraph_id, sub_title, sub_title_pos, paragraph, paragraph_pos FROM paragraphs WHERE page_id = ?'
     return new Promise((resolve, reject) => {
         const dbStmt = db.prepare(query);

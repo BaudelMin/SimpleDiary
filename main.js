@@ -3,6 +3,7 @@ const path = require('path')
 const { db } = require('./database/db')
 const dbUser = require('./database/user')
 const dbModel = require('./database/models')
+const dbPageContent = require('./database/pageContent')
 
 let mainWindow
 
@@ -98,6 +99,14 @@ ipcMain.handle('login', async (event, username, password) => {
     } catch (error) {
         return { success: false, error: error.message };
     }
+});
+
+ipcMain.handle('pages', (_, pageId, userId) => {
+    return dbPageContent.collectUserPages(pageId);
+});
+
+ipcMain.handle('get-page-content', async (_, pageId) => {
+    return dbPageContent.getAllPagesContent(pageId);
 });
 
 // Handle entry creation

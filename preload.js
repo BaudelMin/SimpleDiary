@@ -11,6 +11,8 @@ const WINDOW_API = {
   entryAdded : (callback) => ipcRenderer.on('entry-added', callback),
   getEntries: (userId) => ipcRenderer.send('get-entries', userId),
   entries: (callback) => ipcRenderer.on('entries', callback),
+  pages: (pageId, userId) => ipcRenderer.invoke('pages', pageId, userId),
+  getPageContent: (pageId) => ipcRenderer.invoke('get-page-content', pageId),
 }
 
 contextBridge.exposeInMainWorld('api', WINDOW_API)
