@@ -18,7 +18,7 @@ const addNewParagraphBtn = document.getElementById('addNewParagraph');
 const paragraphContainer = document.querySelector('.paragraph-container');
 
 // State management
-let currentPageIndex = 0, currentPageNumber = 0;
+let currentPageIndex = 0, currentPageNumber = 0, positionCount = 1;
 let pages = [];
 let min_page_number = 0, pageContent = null, currentPageId = null, pageCreateAt = null;
 
@@ -114,6 +114,7 @@ function createNewParagraphSection() {
         <button class="btn remove-paragraph-btn">×</button>
         <input type="text" class="subtitle-input" placeholder="Subtitle (optional)">
         <textarea class="paragraph-input" placeholder="Enter paragraph content"></textarea>
+        <input hidden id="position-input" min="1" max="4" value="${positionCount + 1}">
     `;
 
     // Add remove button functionality
@@ -172,7 +173,7 @@ editForm.querySelector('.save-page-btn').addEventListener('click', () => {
     };
 
     // Send to main process to save in database
-    window.api.savePage(page);
+    // window.api.savePage(page);
     
     // Clear form
     clearEditForm();
@@ -209,6 +210,7 @@ function createParagraphSection(subtitle = '', content = '') {
         <input type="text" class="subtitle-input" placeholder="Subtitle (optional)" value="${subtitle}">
         <textarea class="paragraph-input" placeholder="Enter paragraph content">${content}</textarea>
         <button class="btn remove-paragraph-btn">Remove</button>
+        
     `;
     
     section.querySelector('.remove-paragraph-btn').addEventListener('click', () => {
@@ -259,9 +261,12 @@ saveEditBtn.addEventListener('click', async () => {
     const paragraphContents = [];
     
     editParagraphContainer.querySelectorAll('.paragraph-section').forEach(section => {
+        let position = section.querySelector('.position-input').value
         paragraphContents.push({
             subtitle: section.querySelector('.subtitle-input').value,
-            content: section.querySelector('.paragraph-input').value
+            paragraph: section.querySelector('.paragraph-input').value,
+            sub_title_pos: position,
+            paragraph_pos: position
         });
     });
 
@@ -287,6 +292,7 @@ saveEditBtn.addEventListener('click', async () => {
     
     // Close the modal
     editModal.classList.add('hidden');
+    positionCount = 1
 });
 
 // Display current page
