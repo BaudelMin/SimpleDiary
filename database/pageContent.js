@@ -109,7 +109,6 @@ const collectUserPages = (user_id) => {
 }
 
 const getAllPagesContent = (page_id) => {
-    console.log('getAllPagesContent called with page_id = ', page_id);
     let query = 'SELECT paragraph_id, sub_title, sub_title_pos, paragraph, paragraph_pos FROM paragraphs WHERE page_id = ?'
     return new Promise((resolve, reject) => {
         const dbStmt = db.prepare(query);

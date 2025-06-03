@@ -32,8 +32,8 @@ function createParagraphsTable(){
     let query = `
         create table if not exists paragraphs(
             paragraph_id integer not null primary key,
-            sub_title varchar(150),
-            paragraph varchar(400),
+            sub_title varchar(255),
+            paragraph varchar(800),
             paragraph_pos integer,
             sub_title_pos integer,
             page_id integer,

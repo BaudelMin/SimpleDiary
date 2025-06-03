@@ -42,6 +42,9 @@ ipcMain.handle('add-user', (_, username, password) => {
   return dbUser.addUser(username, password);
 })
 
+ipcMain.handle('save-page', (_, page) => {
+  return dbPageContent.savePageContent(page);
+})
 
 app.whenReady().then(() => {
     dbModel.databaseModelMigration()

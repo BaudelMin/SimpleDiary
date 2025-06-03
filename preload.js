@@ -13,6 +13,7 @@ const WINDOW_API = {
   entries: (callback) => ipcRenderer.on('entries', callback),
   pages: (pageId, userId) => ipcRenderer.invoke('pages', pageId, userId),
   getPageContent: (pageId) => ipcRenderer.invoke('get-page-content', pageId),
+  savePage: (page) => ipcRenderer.invoke('save-page', page),
 }
 
 contextBridge.exposeInMainWorld('api', WINDOW_API)

@@ -14,7 +14,7 @@
         <div class="sidebar-item" data-page="edit">
             <span>✏️ New Page</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" data-page="settings">
             <span>⚙️ Settings</span>
         </div>
         <div class="sidebar-item">
@@ -46,12 +46,19 @@
 
         <div class="edit-page-content hidden" id="editPageContent">
             <div class="edit-form">
-                <input type="text" id="pageTitle" placeholder="Enter page title" class="page-title-input">
+                <input type="text" id="pageTitle" 
+                    placeholder="Enter page title" 
+                    class="page-title-input"
+                    maxlength="255">
                 <div class="paragraph-container">
                     <div class="paragraph-section">
-                        <input type="text" class="subtitle-input" placeholder="Subtitle (optional)">
-                        <textarea class="paragraph-input" placeholder="Enter paragraph content"></textarea>
-                        <input hidden class="position-input" min="1" max="4" value="1">
+                        <input type="text" class="subtitle-input" 
+                            placeholder="Subtitle (optional)" 
+                            maxlength="255">
+                        <textarea class="paragraph-input" 
+                            placeholder="Enter paragraph content" 
+                            maxlength="800"></textarea>
+                        <input hidden class="position-input-1" min="1" max="4" value="1">
                     </div>
                 </div>
                 <button class="btn add-new-paragraph-btn" id="addNewParagraph">+ Add New Paragraph</button>
@@ -67,12 +74,123 @@
                     <span class="close-modal">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="editPageTitle" placeholder="Enter page title" class="page-title-input">
+                    <input type="text" id="editPageTitle" 
+                        placeholder="Enter page title" 
+                        class="page-title-input"
+                        maxlength="255">
                     <div class="paragraph-container" id="editParagraphContainer">
                         <!-- Paragraphs will be added here dynamically -->
                     </div>
                     <button class="btn add-paragraph-btn" id="addParagraph">+ Add Paragraph</button>
                     <button class="btn save-edit-btn" id="saveEdit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-content hidden" id="settingsContent">
+            <div class="settings-section">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="settings-block">
+                        <h3>Default Theme</h3>
+                        <div class="theme-options">
+                            <div class="theme-option">
+                                <div class="theme-preview clean-white"></div>
+                                <span>Clean White</span>
+                            </div>
+                            <div class="theme-option">
+                                <div class="theme-preview calm-blue"></div>
+                                <span>Calm Blue</span>
+                            </div>
+                            <div class="theme-option">
+                                <div class="theme-preview sunset"></div>
+                                <span>Sunset</span>
+                            </div>
+                            <div class="theme-option">
+                                <div class="theme-preview dark-mode"></div>
+                                <span>Dark Mode</span>
+                            </div>
+                        </div>
+                        <a href="#" class="browse-more">+ Browse more themes</a>
+                    </div>
+
+                    <div class="settings-block">
+                        <h3>Text Preferences</h3>
+                        <div class="text-preferences">
+                            <div class="preference-item">
+                                <label>Font Size</label>
+                                <div class="font-size-slider">
+                                    <span>A</span>
+                                    <input type="range" id="fontSize" min="12" max="24" value="16">
+                                    <span>A</span>
+                                </div>
+                            </div>
+                            <div class="preference-item">
+                                <label>Font Family</label>
+                                <select id="fontFamily">
+                                    <option value="sans-serif">Sans Serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                </select>
+                            </div>
+                            <div class="preference-item">
+                                <label>Line Spacing</label>
+                                <select id="lineSpacing">
+                                    <option value="1.5">Normal (1.5)</option>
+                                    <option value="2">Relaxed (2.0)</option>
+                                    <option value="1.2">Compact (1.2)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h3>Auto-Save & Editing</h3>
+                        <div class="editing-preferences">
+                            <div class="preference-item">
+                                <label>Show word count</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="showWordCount">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label>Spell check</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="spellCheck">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label>Auto-correct</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="autoCorrect">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h3>Background Pattern</h3>
+                        <div class="pattern-options">
+                            <div class="pattern-option">
+                                <div class="pattern-preview none"></div>
+                                <span>None</span>
+                            </div>
+                            <div class="pattern-option">
+                                <div class="pattern-preview dots"></div>
+                                <span>Dots</span>
+                            </div>
+                            <div class="pattern-option">
+                                <div class="pattern-preview lines"></div>
+                                <span>Lines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-actions">
+                    <button class="btn btn-primary" id="saveSettings">Save Changes</button>
                 </div>
             </div>
         </div>
